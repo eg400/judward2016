@@ -1,4 +1,23 @@
-var app = angular.module("judward2016", []);
+var app = angular.module("judward2016", ['ngRoute']);
+
+app.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/register', {
+        templateUrl: 'html/register.html',
+        controller: 'registerController'
+      }).
+      otherwise({
+        redirectTo: '/'
+      });
+}]);
+
+app.controller("registerController", ['$scope', '$location', function($scope,$location) {
+  $scope.register = function(){
+      $location.path("/");
+  };
+  //var ref = new Firebase("https://judward2016.firebaseio.com");
+}]);
 
 app.controller("judward2016Ctrl", ['$scope', function($scope) {
   var ref = new Firebase("https://judward2016.firebaseio.com");
@@ -21,27 +40,33 @@ app.controller("loginCtrl", ['$scope', '$timeout', function($scope, $timeout) {
   };
 
   $scope.createUser = function(email, password) {
-    ref.createUser({
-      email    : email,
-      password : password
-    }, function(error, userData) {
-      if (error) {
-        console.log("Error creating user:", error);
-        $scope.updateAlertMessage('Cannot creat useer: ' + error);
-      } else {
-        console.log("Successfully created user account with uid: local_email", userData.uid);
-        $scope.updateAlertMessage('Created User: ' + email + 'Pleae Click Sign In to use your new account');
-        ref.child("users").child(userData.uid).set({
-          password: password,
-          email: email
-        });
-      }
-    });
+    var authData = ref.getAuth();
+    if (authData) {
+      console.log("Logged in as :" + authData.password.email + ' Please logout before Creating New User');
+      $scope.updateAlertMessage("Logged in as :" + authData.password.email + ' Please logout before Creating New User');
+    } else {
+      ref.createUser({
+        email    : email,
+        password : password
+      }, function(error, userData) {
+        if (error) {
+          console.log("Error creating user:", error);
+          $scope.updateAlertMessage('Cannot creat user: ' + error);
+        } else {
+          console.log("Successfully created user account with uid: local_email", userData.uid);
+          $scope.updateAlertMessage('Created User: ' + email + 'Pleae Click Sign In to use your new account');
+          ref.child("users").child(userData.uid).set({
+            password: password,
+            email: email
+          });
+        }
+      });
+    }
   };
 
   $scope.loginUser = function(email, password) {
     email = typeof email !== 'undefined' ? email : 'noemail';
-    password = typeof password !== 'undefined' ? password : 'pword';
+    password = typeof password !== 'undefined' ? password : 'nopword';
     ref.authWithPassword({
       email    : email,
       password : password
@@ -68,7 +93,7 @@ app.controller("loginCtrl", ['$scope', '$timeout', function($scope, $timeout) {
   // Create a callback which logs the current auth state
   function authDataCallback(authData) {
     if (authData) {
-      $scope.updateAlertMessage(authData.password.email);
+      $scope.updateAlertMessage("User " + authData.uid + " is logged in with " + authData.provider + " email:" + authData.password.email);
       console.log("User " + authData.uid + " is logged in with " + authData.provider + " email:" + authData.password.email);
     } else {
       console.log("No user logged in");
