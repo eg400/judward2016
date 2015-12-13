@@ -1,0 +1,15 @@
+<div ng-controller="rsvpCompleteController">
+    <div class="alert alert-success">
+        <h3 style="font-weight: bold;">RSVP Complete</h3>
+        <p>Guest(s) registered using email <strong>{{emailService.model.email}}</strong></p>
+        <p>A confirmation email summarizing your RSVP details has been sent to <strong>{{emailService.model.email}}</strong> from info@judward2016.com</p>
+        <p>Please check the details thoroughly!</p>
+        <p>For any updates you would like to make feel free to RSVP again using the same email address and this will override any data from previous RSVPs</p>
+        <p>Any questions or issue please email info@judward2016.com</p>
+    </div>
+
+    <p></p><p></p><p></p><p></p>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info" ng-click="go('/home')">Return to Homepage</button>
+    </div>
+</div>

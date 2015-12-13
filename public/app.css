@@ -1,7 +1,28 @@
 .gibbo {
-  color: white;
+    color: white;
 }
 .navbar-inverse {
-  background-color: white;
+    background-color: white;
+}
 
+.rsvp_form {
+    border:solid 1px rgba(206, 206, 206, 0.25);
+    border-radius: 5px;
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.form-group .help-block {
+    display: none;
+}
+
+.form-group.has-error .help-block {
+    display: block;
+}
+
+.input-group-addon {
+    border-left-width: 0;
+    border-right-width: 0;
 }
