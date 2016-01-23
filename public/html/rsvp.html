@@ -1,98 +1,118 @@
 <!-- RSVP -->
 <form class="container" ng-controller="rsvpController" name="rsvpForm" novalidate>
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div style="color: #ff3f36;font-style: italic;font-size: 12pt;margin-top: 20px">
+                <span class="glyphicon glyphicon-exclamation-sign" style="margin-right: 10px" aria-hidden="true"></span>Please RSVP by 03/01/16
+            </div>
             <div class="rsvp_form">
                 <h3>Lead Guest Details</h3>
                 <div class="form-group" show-errors>
                     <label class="control-label">Email address</label>
-                    <input class="form-control" name="user.email" type="email" placeholder="Enter email" ng-model="user.email" required />
+                    <input class="form-control" name="email" type="email" placeholder="Enter email" ng-model="user.email" required />
                     <p class="help-block" ng-if="rsvpForm.email.$error.required">The user's email is required</p>
                     <p class="help-block" ng-if="rsvpForm.email.$error.email">The email address is invalid</p>
                 </div>
                 <div class="form-group" show-errors>
                     <label class="control-label">First Name</label>
-                    <input type="name" class="form-control" placeholder="Enter first name" name="user.self.firstname" ng-model="user.self.firstname" required />
-                    <p class="help-block" ng-if="rsvpForm.firstname.$error.required">First name is required</p>
+                    <input type="name" class="form-control" placeholder="Enter first name" name="selfFirstname" ng-model="user.self.firstname" required />
+                    <p class="help-block" ng-if="rsvpForm.selfFirstname.$error.required">First name is required</p>
                 </div>
                 <div class="form-group" show-errors>
                     <label class="control-label">Last Name</label>
-                    <input type="name" class="form-control" placeholder="Enter last name" name="user.self.lastname" ng-model="user.self.lastname" required />
-                    <p class="help-block" ng-if="rsvpForm.lastname.$error.required">Last name is required</p>
+                    <input type="name" class="form-control" placeholder="Enter last name" name="selfLastname" ng-model="user.self.lastname" required />
+                    <p class="help-block" ng-if="rsvpForm.selfLastname.$error.required">Last name is required</p>
                 </div>
                 <div class="form-group" radio-errors>
+                    <div><h5 class="control-label" style="font-weight: bold;">Attending Judy & Edward's Wedding?</h5><h5 class="control-label" style="font-style: italic">Please note this is an adults only event.</h5></div>
+                    <div class="radio">
+                        <label class="control-label" ng-click="isAttending()"><input type="radio" name="attending" ng-model="user.attending" value="1" required>Yes</label>
+                    </div>
+                    <div class="radio">
+                        <label class="control-label" ng-click="isNotAttending()"><input type="radio" name="attending" ng-model="user.attending" value="0" required>No</label>
+                    </div>
+                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.attending.$error.required && submitted">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Please select your RSVP choice
+                    </div>
+                </div>
+            </div>
+            <p><p><p><p><p><p><p><p>
+            <div class="rsvp_form" ng-if="attending">
+                <div class="form-group" radio-errors ng-if="attending">
                     <div><h5 class="control-label" style="font-weight: bold;">Please Select Your Starter Option</h5></div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.self.starter" ng-model="user.self.starter" value="saladA" required>Salad A</label>
+                        <label class="control-label"><input type="radio" name="selfStarter" ng-model="user.self.starter" value="Baby Lettuce" required>County line baby lettuce, local strawberries, spicy almonds, Pt. Reyes Blue and Chardonnay vinaigrette</label>
                     </div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.self.starter" ng-model="user.self.starter" value="saladB" required>Salad B</label>
+                        <label class="control-label"><input type="radio" name="selfStarter" ng-model="user.self.starter" value="Wild Arugula" required>Wild arugula,smoked bacon, poached figs, Redwood Hill goat cheese, balsamic-fig vinaigrette</label>
                     </div>
-                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.starter.$error.required && submitted">
+                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.selfStarter.$error.required && submitted">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span>
                         Please select your starter
                     </div>
                 </div>
-                <div class="form-group" radio-errors>
+                <div class="form-group" radio-errors ng-if="attending">
                     <div><h5 class="control-label" style="font-weight: bold;">Please Select Your Main Course Option</h5></div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.self.main" ng-model="user.self.main" value="beef" required>Beef Short Ribs</label>
+                        <label class="control-label"><input type="radio" name="selfMain" ng-model="user.self.main" value="Beef" required>Beef Short Ribs</label>
                     </div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.self.main" ng-model="user.self.main" value="chicken" required>Rosemary Chicken</label>
+                        <label class="control-label"><input type="radio" name="selfMain" ng-model="user.self.main" value="Chicken" required>Basil Chicken</label>
                     </div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.self.main" ng-model="user.self.main" value="vegitarian" required>Vegetarian Tart</label>
+                        <label class="control-label"><input type="radio" name="selfMain" ng-model="user.self.main" value="Vegetarian" required>Vegetarian Tart</label>
                     </div>
-                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.main.$error.required && submitted">
+                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.selfMain.$error.required && submitted">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span>
                         Please select your main
                     </div>
                 </div>
             </div>
-            <p></p><p></p><p></p><p></p>
-            <div class="rsvp_form">
+            <p><p><p><p><p><p><p><p>
+            <div class="rsvp_form" ng-if="attending">
                 <div><h3 style="font-weight: bold;">Plus 1</h3></div>
                 <div class="form-group" radio-errors>
                     <div><h5 class="control-label" style="font-weight: bold;">Bringing a Plus 1 to the Wedding?</h5></div>
                     <div class="radio" ng-click="revealPlus1()">
-                        <label class="control-label"><input type="radio" name="plus1" ng-model="user.hasPlus1" value="1" required>Yes</label>
+                        <label class="control-label"><input type="radio" name="hasPlus1" ng-model="user.hasPlus1" value="1" required>Yes</label>
                     </div>
                     <div class="radio" ng-click="hidePlus1()">
-                        <label class="control-label"><input type="radio" name="plus1" ng-model="user.hasPlus1" value="0" required>No</label>
+                        <label class="control-label"><input type="radio" name="hasPlus1" ng-model="user.hasPlus1" value="0" required>No</label>
                     </div>
-                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.plus1.$error.required && submitted">
+                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.hasPlus1.$error.required && submitted">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span>
                         Please select if you're bringing a Plus 1 or not
                     </div>
                 </div>
             </div>
-            <p></p><p></p><p></p><p></p>
-            <div class="rsvp_form" ng-if="hasPlus1">
+            <p><p><p><p><p><p><p><p>
+            <div class="rsvp_form" ng-if="hasPlus1 && attending">
                 <h3>Plus 1 Guest Details</h3>
                 <div class="form-group" show-errors>
                     <label class="control-label">First Name</label>
-                    <input type="name" class="form-control" placeholder="Enter first name" name="user.plus1.firstname" ng-model="user.plus1.firstname" required />
-                    <p class="help-block" ng-if="rsvpForm.firstname.$error.required">First name is required</p>
+                    <input type="name" class="form-control" placeholder="Enter first name" name="plus1Firstname" ng-model="user.plus1.firstname" required />
+                    <p class="help-block" ng-if="rsvpForm.plus1Firstname.$error.required">First name is required</p>
                 </div>
                 <div class="form-group" show-errors>
                     <label class="control-label">Last Name</label>
-                    <input type="name" class="form-control" placeholder="Enter last name" name="user.plus1.lastname" ng-model="user.plus1.lastname" required />
-                    <p class="help-block" ng-if="rsvpForm.lastname.$error.required">Last name is required</p>
+                    <input type="name" class="form-control" placeholder="Enter last name" name="plus1Lastname" ng-model="user.plus1.lastname" required />
+                    <p class="help-block" ng-if="rsvpForm.plus1Lastname.$error.required">Last name is required</p>
                 </div>
                 <div class="form-group" radio-errors>
                     <div><h5 class="control-label" style="font-weight: bold;">Please Select Your Plus1's Starter Option</h5></div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.plus1.starter" ng-model="user.plus1.starter" value="saladA" required>Salad A</label>
+                        <label class="control-label"><input type="radio" name="plus1Starter" ng-model="user.plus1.starter" value="Baby lettuce" required>County Line baby lettuce, local strawberries, spicy almonds, Pt. Reyes Blue and Chardonnay vinaigrette</label>
                     </div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.plus1.starter" ng-model="user.plus1.starter" value="saladB" required>Salad B</label>
+                        <label class="control-label"><input type="radio" name="plus1Starter" ng-model="user.plus1.starter" value="Wild arugula" required>Wild arugula,smoked bacon, poached figs, Redwood Hill goat cheese, balsamic-fig vinaigrette</label>
                     </div>
-                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.starter.$error.required && submitted">
+                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.plus1Starter.$error.required && submitted">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span>
                         Please select your Plus 1's starter
@@ -101,44 +121,34 @@
                 <div class="form-group" radio-errors>
                     <div><h5 class="control-label" style="font-weight: bold;">Please Select Your Plus1's Main Course Option</h5></div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.plus1.main" ng-model="user.plus1.main" value="beef" required>Beef Short Ribs</label>
+                        <label class="control-label"><input type="radio" name="plus1Main" ng-model="user.plus1.main" value="Beef" required>Beef Short Ribs</label>
                     </div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.plus1.main" ng-model="user.plus1.main" value="chicken" required>Rosemary Chicken</label>
+                        <label class="control-label"><input type="radio" name="plus1Main" ng-model="user.plus1.main" value="Chicken" required>Basil Chicken</label>
                     </div>
                     <div class="radio">
-                        <label class="control-label"><input type="radio" name="user.plus1.main" ng-model="user.plus1.main" value="vegitarian" required>Vegetarian Tart</label>
+                        <label class="control-label"><input type="radio" name="plus1Main" ng-model="user.plus1.main" value="Vegetarian" required>Vegetarian Tart</label>
                     </div>
-                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.main.$error.required && submitted">
+                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.plus1Main.$error.required && submitted">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span>
                         Please select your Plus 1's main
                     </div>
                 </div>
             </div>
-            <p></p><p></p><p></p><p></p>
-            <div class="rsvp_form">
+            <p><p><p><p><p><p><p><p>
+            <div class="rsvp_form" ng-if="attending">
                 <div><h3 style="font-weight: bold;">Accomodation</h3></div>
-                <div class="form-group" radio-errors>
-                    <div><h5 class="control-label" style="font-weight: bold;">Are you planning to stay in Courtyard Marriott Hotel Block (transportation provided to Winery)?</h5></div>
-                    <div class="radio">
-                        <label class="control-label"><input type="radio" name="marriott" ng-model="user.marriott" value="1" required>Yes (Click Hotels tab above for booking options)</label>
-                    </div>
-                    <div class="radio">
-                        <label class="control-label"><input type="radio" name="marriott" ng-model="user.marriott" value="0" required>No</label>
-                    </div>
-                    <div class="alert alert-danger" role="alert" ng-if="rsvpForm.marriott.$error.required && submitted">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                        <span class="sr-only">Error:</span>
-                        Please indicate your accomodation plans
-                    </div>
+                <div class="form-group">
+                    <div><h5 class="control-label" style="font-weight: bold;">Are you planning to stay in Courtyard Marriott Hotel Block?</h5><h5 style="font-style: italic">If so after completing your RSVP please check HOTELS tab of the website</h5></div>
                 </div>
             </div>
-            <p></p><p></p><p></p><p></p>
+            <p><p><p><p><p><p><p><p>
             <div class="form-group">
-                <button type="submit" class="btn btn-success" ng-click="register(user)">Submit Guest Details</button>
+                <button type="submit" class="btn btn-success" ng-click="register(user); sendMail()">Submit Guest Details</button>
             </div>
         </div>
+        <div class="col-md-3"></div>
     </div>
 </form>
 <!-- / RSVP -->

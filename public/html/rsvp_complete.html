@@ -1,15 +1,31 @@
 <div ng-controller="rsvpCompleteController">
-    <div class="alert alert-success">
-        <h3 style="font-weight: bold;">RSVP Complete</h3>
-        <p>Guest(s) registered using email <strong>{{emailService.model.email}}</strong></p>
-        <p>A confirmation email summarizing your RSVP details has been sent to <strong>{{emailService.model.email}}</strong> from info@judward2016.com</p>
-        <p>Please check the details thoroughly!</p>
-        <p>For any updates you would like to make feel free to RSVP again using the same email address and this will override any data from previous RSVPs</p>
-        <p>Any questions or issue please email info@judward2016.com</p>
-    </div>
-
-    <p></p><p></p><p></p><p></p>
-    <div class="form-group">
-        <button type="submit" class="btn btn-info" ng-click="go('/home')">Return to Homepage</button>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <!--<img class="ed-img" src="images/ed_thunbs.jpg" ng-if="emailService.model.attending == '1'">-->
+            <p><p><p><p><p><p><p><p>
+            <p></p><p></p><p></p><p></p>
+            <div class="alert alert-success" ng-if="emailService.model.attending == '1'">
+                <h3 style="font-weight: bold;">RSVP Complete</h3>
+                <p>Thank You for your RSVP</p>
+                <p>Guest(s) registered using email <strong>{{emailService.model.email}}</strong></p>
+                <p><strong>{{emailService.model.firstName | capitalize}} {{emailService.model.lastName | capitalize}}</strong></p>
+                <p ng-if="emailService.model.hasPlus1 == '1'"><strong>{{emailService.model.plus1FirstName | capitalize}} {{emailService.model.plus1LastName | capitalize}}</strong></p>
+                <p>A confirmation email summarizing your RSVP details has been sent to <strong>{{emailService.model.email}}</strong> from info@judward2016.com</p>
+                <p>Please check the details thoroughly!</p>
+                <p>For any updates you would like to make feel free to RSVP again using the same email address and this will override any data from previous RSVPs</p>
+                <p>Any questions or issues please email info@judward2016.com</p>
+            </div>
+            <div class="alert alert-success" ng-if="emailService.model.attending == '0'">
+                <h3 style="font-weight: bold;">RSVP Complete</h3>
+                <p>Thank You for your RSVP <strong>{{emailService.model.firstName | capitalize}} {{emailService.model.lastName | capitalize}}</strong></p>
+                <p>Sorry to hear you won't be able to attend </p>
+            </div>
+            <p></p><p></p><p></p><p></p>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success" ng-click="go('/home')">Return to Homepage</button>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
     </div>
 </div>

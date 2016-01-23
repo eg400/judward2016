@@ -1,8 +1,5 @@
-.gibbo {
-    color: white;
-}
-.navbar-inverse {
-    background-color: white;
+body {
+    padding-top: 77px;
 }
 
 .rsvp_form {
@@ -12,6 +9,7 @@
     padding-right: 20px;
     padding-bottom: 10px;
     padding-left: 20px;
+    margin-top: 20px;
 }
 
 .form-group .help-block {
@@ -25,4 +23,300 @@
 .input-group-addon {
     border-left-width: 0;
     border-right-width: 0;
+}
+
+/*Navigation Bar Setup*/
+.navbar-brand {
+    float: left;
+    height: 75px;
+    padding: 22px 16px;
+    font-size: 19px;
+    line-height: 20px;
+}
+
+.navbar-right {
+    float: right!important;
+}
+
+.navbar-toggle-ed {
+    margin-top: 20px;
+}
+
+.navbar-nav {
+    margin: 12.5px 0px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    border-bottom: 0;
+}
+
+.nav-text {
+    color: black;
+    line-height: 1.6em;
+    letter-spacing: 2px;
+    font-style: normal;
+    font-weight: 200;
+    text-shadow: 0 0 0 rgba(0,0,0,.25);
+}
+
+@media (min-width: 767px) {
+    .alert-text {
+        margin-left: 150px;
+        margin-top: 27px;
+        color: red;
+    }
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+
+.blurb-title {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+#blurb p {
+    color: black;
+    font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+    letter-spacing: 0.1em;
+    width: 500px;
+    text-align: center;
+    margin: 27px auto;
+    text-transform: lowercase;
+    line-height: 145%;
+    font-size: 15pt;
+    font-variant: small-caps;
+}
+
+.blurb-no-margin {
+    color: black;
+    font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+    letter-spacing: 0.1em;
+    width: 95%;
+    text-align: center;
+    margin-top: 25px;
+    margin-left: 0;
+    margin-right: 0;
+    text-transform: lowercase;
+    line-height: 145%;
+    font-size: 15pt;
+    font-variant: small-caps;
+}
+
+.heading-text {
+    line-height: 100px;
+    font-weight: 120;
+}
+
+
+.header-our-story {
+    background: url(images/loch_lomond.JPG);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+    margin-left: 50px;
+    margin-right:50px;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-size: 80px;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Remove the margin for the mobile users*/
+@media (max-width: 767px) {
+    .header-our-story, .heading-text{
+        background: url(images/mobile_loch_lomond.JPG);
+        margin-left: 0px;
+        margin-right: 0px;
+        line-height: 50px;
+        font-size: 50px;
+        font-weight: 200;
+        background-size: cover;
+    }
+}
+
+.header-adventures {
+    background-image: url(images/bking.JPG);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+    margin-left: 50px;
+    margin-right:50px;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-size: 80px;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.header-proposal {
+    background-image: url(images/fake_kkodo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+    margin-left: 50px;
+    margin-right:50px;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-size: 80px;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.header-judward {
+    background-image: url(images/ring.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+    margin-left: 50px;
+    margin-right:50px;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-size: 80px;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.header-paradice-ridge-vines {
+    background-image: url(./images/vines.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+    margin-left: 50px;
+    margin-right:50px;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-size: 80px;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.header-paradice-ridge-love {
+    background-image: url(images/pr_love.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+    margin-left: 50px;
+    margin-right:50px;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-size: 80px;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.header-stoked {
+    background-image: url(images/80s_party.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:top;
+    background-size: cover;
+    margin-left: 50px;
+    margin-right:50px;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-size: 80px;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.header-hotels {
+    background: url(images/zion.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+    margin-left: 50px;
+    margin-right:50px;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-size: 80px;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.glyphicon-chevron-down {
+    font-size: 25px;
+}
+
+.glyphicon-leaf {
+    display:block;
+    text-align:center;
+    margin-bottom: 25px;
+}
+
+.glyphicon-tree-conifer {
+    display:block;
+    text-align:center;
+    margin-bottom: 25px;
+}
+
+.glyphicon-queen {
+    display:block;
+    text-align:center;
+    margin-bottom: 25px;
+}
+
+.glyphicon-apple {
+    display:block;
+    text-align:center;
+    margin-bottom: 25px;
+}
+
+.glyphicon-ice-lolly-tasted {
+    display:block;
+    text-align:center;
+    margin-bottom: 25px;
+}
+
+.glyphicon-sunglasses {
+    display:block;
+    text-align:center;
+    margin-bottom: 25px;
+}
+
+.glyphicon-globe {
+    display:block;
+    text-align:center;
+    margin-bottom: 25px;
+}
+
+.glyphicon-heart-empty {
+    display:block;
+    text-align:center;
+    margin-bottom: 25px;
+}
+
+.glyphicon-thumbs-up {
+    display:block;
+    text-align:center;
+    margin-bottom: 25px;
 }
